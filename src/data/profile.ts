@@ -11,13 +11,13 @@ export interface ResumeProfileDetail {
 }
 
 export const mockProfile: ProfileDetail = {
-  name: '홍길동',
-  email: 'example@gmail.com'
+  name: '손호성',
+  email: 'hoseong1358@gmail.com'
 };
 
 export const mockResumeProfile: ResumeProfileDetail = {
   title: '프론트엔드 개발자',
-  summary: 'React와 TypeScript를 기반으로 사용자 친화적인 웹 애플리케이션을 개발합니다. 깔끔한 코드와 좋은 사용자 경험을 추구합니다.',
-  contact_email: 'example@gmail.com',
-  github: 'https://github.com'
+  summary: 'React와 TypeScript를 기반으로 개발합니다.\n복잡한 시스템을 나누고 다시 조합하는 것을 좋아합니다.',
+  contact_email: 'hoseong1358@gmail.com',
+  github: 'https://github.com/ghtjd1358'
 };

@@ -11,9 +11,13 @@ module.exports = merge(common, {
     static: {
       directory: path.join(__dirname, 'public')
     },
-    port: 9000,
+    port: 5001,
     hot: true,
     open: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    },
+    setupExitSignals: true
   }
 });
