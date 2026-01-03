@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { ModalContainer } from './components/modal';
 import { ScrollTopButton } from './components/button';
 import {
@@ -43,8 +43,9 @@ const useScrollAnimation = () => {
 };
 
 const App: React.FC = () => {
-  const user = useSelector((state: any) => state?.app?.user);
+  const user = useSelector((state: any) => state.app?.user);
 
+  // 로컬 UI 상태
   const [activeSection, setActiveSection] = useState('');
 
   // Static mock data
@@ -97,11 +98,11 @@ const App: React.FC = () => {
       {/* 섹션 네비게이션 바 */}
       <div className="sticky-nav-wrapper">
         <nav className="sticky-nav">
-          <button className="nav-logo-dots" onClick={scrollToTop}>
-            <span className="dot blue"></span>
-            <span className="dot green"></span>
-            <span className="dot lime"></span>
-          </button>
+          {/*<button className="nav-logo-dots" onClick={scrollToTop}>*/}
+          {/*  <span className="dot blue"></span>*/}
+          {/*  <span className="dot green"></span>*/}
+          {/*  <span className="dot lime"></span>*/}
+          {/*</button>*/}
           <ul className="nav-pills">
             {navSections.map((section) => (
               <li key={section.id}>
@@ -122,13 +123,12 @@ const App: React.FC = () => {
       <ExperienceSection experiences={experiences} projects={mockProjects} />
       <ProjectsSection portfolioData={mockPortfolioData} />
       <ContactSection
-        contactEmail={resumeProfile?.contact_email || 'example@gmail.com'}
-        githubUrl={resumeProfile?.github || 'https://github.com'}
+        contactEmail={resumeProfile?.contact_email || 'hoseong1358@gmail.com'}
+        githubUrl={resumeProfile?.github || 'https://github.com/ghtjd1358'}
+        blogUrl={resumeProfile?.blog || 'https://velog.io/@ghtjd1358/series'}
       />
-
       {/* 스크롤 탑 버튼 */}
       <ScrollTopButton />
-
       {/* 모달 컨테이너 */}
       <ModalContainer />
     </>

@@ -25,7 +25,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <h1 className="hero-title">
             안녕하세요,<br />
             프론트엔드 개발자<br />
-            <span className="highlight">개발자</span>입니다.
+            <span className="highlight">손호성</span>입니다.
           </h1>
           <p className="hero-desc">
             React와 TypeScript를 기반으로 웹 프론트엔드를 개발합니다.
@@ -33,9 +33,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="hero-buttons">
             <a href="#" className="btn btn-primary">
               이력서 다운로드 ↓
-            </a>
-            <a href="#contact" className="btn btn-secondary">
-              블로그
             </a>
           </div>
         </div>

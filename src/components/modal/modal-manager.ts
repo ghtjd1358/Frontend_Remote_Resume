@@ -31,7 +31,8 @@ export function closeAllModals() {
   notify();
 }
 
-export function addModalListListener(listener: Dispatch<ModalParams<any>[]>) {
+export function
+addModalListListener(listener: Dispatch<ModalParams<any>[]>) {
   listeners.push(listener);
   return () => {
     const index = listeners.indexOf(listener);

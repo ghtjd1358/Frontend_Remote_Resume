@@ -47,7 +47,9 @@ export const mockSkillCategories: SkillCategoryDetail[] = [
       { id: '16', name: 'Vite' },
       { id: '17', name: 'Vercel' },
       { id: '18', name: 'npm' },
-      { id: '19', name: 'Figma' }
+      { id: '19', name: 'Figma' },
+      { id: '20', name: 'Jira' },
+      { id: '21', name: 'Confluence' }
     ]
   }
 ];
