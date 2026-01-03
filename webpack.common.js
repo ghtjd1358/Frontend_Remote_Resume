@@ -2,6 +2,7 @@
 // Phase 4: Module Federation
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const deps = require('./package.json').dependencies;
 
@@ -56,6 +57,12 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: './public/index.html'
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/images', to: 'images' }
+      ]
     })
   ]
 };

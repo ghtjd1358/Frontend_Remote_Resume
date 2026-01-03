@@ -13,6 +13,7 @@ interface Experience {
   start_date: string;
   end_date: string | null;
   is_current: boolean;
+  is_dev: boolean;
   tags?: string[];
   tasks?: Task[];
 }
@@ -26,12 +27,15 @@ interface Project {
   is_current: boolean;
   tags?: string[];
   tasks?: Task[];
+  image?: string;
 }
 
 interface ExperienceSectionProps {
   experiences: Experience[];
   projects?: Project[];
 }
+
+const INITIAL_DISPLAY_COUNT = 3;
 
 const formatDate = (dateStr: string | null, isEnd = false, isCurrent = false) => {
   if (isCurrent && isEnd) return '현재';
@@ -42,6 +46,11 @@ const formatDate = (dateStr: string | null, isEnd = false, isCurrent = false) =>
 
 export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experiences, projects = [] }) => {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const [showAllExp, setShowAllExp] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  const visibleExperiences = showAllExp ? experiences : experiences.slice(0, INITIAL_DISPLAY_COUNT);
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, INITIAL_DISPLAY_COUNT);
 
   const hasNoData = experiences.length === 0 && projects.length === 0;
 
@@ -84,10 +93,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
               <div className="timeline-category-line right"></div>
             </div>
             <div className="timeline">
-              {experiences.map((exp) => (
-                <div key={exp.id} className="timeline-item animate-on-scroll">
-                  <div className="timeline-date">
+              {visibleExperiences.map((exp, index) => (
+                <div key={exp.id} className={`timeline-item ${index < INITIAL_DISPLAY_COUNT ? 'animate-on-scroll' : 'animate-visible'}`}>
+                  <div className={`timeline-date ${!exp.is_current ? 'past' : ''}`}>
                     {formatDate(exp.start_date)} - {formatDate(exp.end_date, true, exp.is_current)}
+                    <span className={`exp-type-badge ${exp.is_dev ? 'dev' : 'non-dev'}`}>
+                      {exp.is_dev ? '개발' : '비개발'}
+                    </span>
                   </div>
                   <div className="timeline-content">
                     <h3>{exp.company}</h3>
@@ -123,6 +135,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
                 </div>
               ))}
             </div>
+            {experiences.length > INITIAL_DISPLAY_COUNT && (
+              <button
+                className="show-more-btn"
+                onClick={() => setShowAllExp(!showAllExp)}
+              >
+                {showAllExp ? '접기' : `더보기 (${experiences.length - INITIAL_DISPLAY_COUNT}개)`}
+              </button>
+            )}
           </>
         )}
 
@@ -135,9 +155,9 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
               <div className="timeline-category-line right"></div>
             </div>
             <div className="timeline">
-              {projects.map((proj) => (
-                <div key={proj.id} className="timeline-item animate-on-scroll">
-                  <div className="timeline-date">
+              {visibleProjects.map((proj, index) => (
+                <div key={proj.id} className={`timeline-item ${index < INITIAL_DISPLAY_COUNT ? 'animate-on-scroll' : 'animate-visible'}`}>
+                  <div className={`timeline-date ${!proj.is_current ? 'past' : ''}`}>
                     {formatDate(proj.start_date)} - {formatDate(proj.end_date, true, proj.is_current)}
                   </div>
                   <div className="timeline-content">
@@ -174,6 +194,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
                 </div>
               ))}
             </div>
+            {projects.length > INITIAL_DISPLAY_COUNT && (
+              <button
+                className="show-more-btn"
+                onClick={() => setShowAllProjects(!showAllProjects)}
+              >
+                {showAllProjects ? '접기' : `더보기 (${projects.length - INITIAL_DISPLAY_COUNT}개)`}
+              </button>
+            )}
           </>
         )}
       </div>

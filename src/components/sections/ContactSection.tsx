@@ -4,13 +4,13 @@ import { SiGmail, SiGithub, SiVelog } from 'react-icons/si';
 interface ContactSectionProps {
   contactEmail: string;
   githubUrl: string;
-  blogUrl?: string;
+  blogUrl: string;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   contactEmail,
   githubUrl,
-  blogUrl = 'https://velog.io'
+  blogUrl
 }) => {
   return (
     <section id="contact" className="section contact">

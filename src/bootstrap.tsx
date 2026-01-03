@@ -6,64 +6,61 @@ import App from './App';
 import { Header } from './components/layout';
 import './global.css';
 
-// Window 타입 확장
+/**
+ * MFA Bootstrap 패턴
+ *
+ * Host에서 실행: window.__REDUX_STORE__ 사용 (Host가 생성한 store)
+ * 단독 실행: fallback store 생성 (개발/테스트용)
+ */
+
 declare global {
-    interface Window {
-        __REDUX_STORE__?: ReturnType<typeof configureStore>;
-    }
+  interface Window {
+    __REDUX_STORE__?: ReturnType<typeof configureStore>;
+  }
 }
 
-// 단독 실행 여부 확인 (Host에서 실행되면 window.__REDUX_STORE__가 존재)
+// 단독 실행용 fallback store (Host 없이 개발할 때만 사용)
+const createFallbackStore = () =>
+  configureStore({
+    reducer: {
+      app: (state = { user: null, isAuthenticated: false, isLoading: false }) => state,
+    },
+  });
+
+// Host의 store 사용, 없으면 fallback
+const getStore = () => window.__REDUX_STORE__ ?? createFallbackStore();
 const isStandalone = !window.__REDUX_STORE__;
 
-// 단독 실행시 사용할 기본 store
-const standaloneStore = configureStore({
-    reducer: {
-        app: (state = { user: null, isAuthenticated: false, isLoading: false }) => state,
-    },
-});
-
-// Root 컴포넌트 - KOMCA 패턴
+// Root 컴포넌트
 const Root: React.FC = () => {
-    useEffect(() => {
-        if (isStandalone) {
-            document.body.classList.add('has-header');
-        }
-        return () => {
-            document.body.classList.remove('has-header');
-        };
-    }, []);
+  useEffect(() => {
+    if (isStandalone) {
+      document.body.classList.add('has-header');
+    }
+    return () => {
+      document.body.classList.remove('has-header');
+    };
+  }, []);
 
-    return (
-        <>
-            <Header isStandalone={isStandalone} />
-            <App />
-        </>
-    );
+  return (
+    <>
+      <Header isStandalone={isStandalone} />
+      <App />
+    </>
+  );
 };
 
+// 렌더링
 const rootElement = document.getElementById('root');
-
-if (!rootElement) {
-    throw new Error('Root element not found');
-}
+if (!rootElement) throw new Error('Root element not found');
 
 const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <Provider store={getStore()}>
+      <Root />
+    </Provider>
+  </React.StrictMode>
+);
 
-if (isStandalone) {
-    root.render(
-        <React.StrictMode>
-            <Provider store={standaloneStore}>
-                <Root />
-            </Provider>
-        </React.StrictMode>
-    );
-} else {
-    root.render(
-        <React.StrictMode>
-            <Root />
-        </React.StrictMode>
-    );
-}
-
-console.log('✅ Resume App Rendered', isStandalone ? '(Standalone)' : '(In Host)');
+console.log(`✅ Remote1 App: ${isStandalone ? 'Standalone' : 'In Host'}`);
