@@ -13,7 +13,7 @@
     "install:all": "cd packages/container && npm install && cd ../app1 && npm install && cd ../app2 && npm install"
   },
   "dependencies": {
-    "@mfa/lib": "*",
+    
     "@reduxjs/toolkit": "^2.11.2",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
