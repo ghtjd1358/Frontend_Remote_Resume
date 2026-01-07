@@ -1,4 +1,5 @@
 import React from 'react';
+import { reactImg, optimizationImg, teamworkImg } from '../../assets/images';
 
 export const FeaturesSection: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ export const FeaturesSection: React.FC = () => {
         <div className="feature-grid">
           <div className="feature-card animate-on-scroll delay-1">
             <div className="feature-image">
-              <img src="./images/hero/react.png" alt="React 기반 개발" />
+              <img src={reactImg} alt="React 기반 개발" />
             </div>
             <h3 className="feature-title">React 기반 개발</h3>
             <p className="feature-desc">
@@ -21,7 +22,7 @@ export const FeaturesSection: React.FC = () => {
           </div>
           <div className="feature-card animate-on-scroll delay-2">
             <div className="feature-image">
-              <img src="./images/hero/optimization.png" alt="아키텍처 설계" />
+              <img src={optimizationImg} alt="아키텍처 설계" />
             </div>
             <h3 className="feature-title">아키텍처 설계</h3>
             <p className="feature-desc">
@@ -31,7 +32,7 @@ export const FeaturesSection: React.FC = () => {
           </div>
           <div className="feature-card animate-on-scroll delay-3">
             <div className="feature-image">
-              <img src="./images/hero/teamwork.png" alt="커뮤니케이션 및 협업" />
+              <img src={teamworkImg} alt="커뮤니케이션 및 협업" />
             </div>
             <h3 className="feature-title">커뮤니케이션 및 협업</h3>
             <p className="feature-desc">
