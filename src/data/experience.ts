@@ -1,3 +1,5 @@
+import { mfaImg, bookstoryImg, dorundorunImg } from '../assets/images';
+
 export interface ExperienceTask {
   id: string;
   task: string;
@@ -104,7 +106,7 @@ export const mockProjects: ProjectDetail[] = [
       { id: 'pt3', task: 'Supabase RLS 적용으로 사용자별 데이터 접근 제어 구현' }
     ],
     tags: ['React', 'TypeScript', 'Webpack', 'Supabase'],
-    image: './images/project/mfa.jpg'
+    image: mfaImg
   },
   {
     id: 'p2',
@@ -120,7 +122,7 @@ export const mockProjects: ProjectDetail[] = [
       { id: 'pt7', task: 'TanStack Query 무한 스크롤 + Debounce로 API 호출 60% 감소' }
     ],
     tags: ['React', 'Vite', 'React Query', 'Zustand'],
-    image: './images/project/bookstory.jpg'
+    image: bookstoryImg
   },
   {
     id: 'p3',
@@ -135,6 +137,6 @@ export const mockProjects: ProjectDetail[] = [
       { id: 'pt9', task: 'React.memo + useCallback으로 리렌더링 최적화, 렌더 횟수 40% 감소' }
     ],
     tags: ['React', 'Redux', 'TypeScript'],
-    image: './images/project/dorundorun.png'
+    image: dorundorunImg
   }
 ];

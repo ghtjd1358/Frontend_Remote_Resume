@@ -137,10 +137,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
             </div>
             {experiences.length > INITIAL_DISPLAY_COUNT && (
               <button
-                className="show-more-btn"
+                className={`show-more-btn ${showAllExp ? 'collapsed' : ''}`}
                 onClick={() => setShowAllExp(!showAllExp)}
               >
-                {showAllExp ? '접기' : `더보기 (${experiences.length - INITIAL_DISPLAY_COUNT}개)`}
+                <div className="chevron-wave">
+                  <span className="chevron"></span>
+                  <span className="chevron"></span>
+                </div>
               </button>
             )}
           </>
@@ -196,10 +199,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
             </div>
             {projects.length > INITIAL_DISPLAY_COUNT && (
               <button
-                className="show-more-btn"
+                className={`show-more-btn ${showAllProjects ? 'collapsed' : ''}`}
                 onClick={() => setShowAllProjects(!showAllProjects)}
               >
-                {showAllProjects ? '접기' : `더보기 (${projects.length - INITIAL_DISPLAY_COUNT}개)`}
+                <div className="chevron-wave">
+                  <span className="chevron"></span>
+                  <span className="chevron"></span>
+                </div>
               </button>
             )}
           </>

@@ -9,6 +9,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import Root from './Root';
 import './global.css';
@@ -23,7 +24,7 @@ declare global {
 const createFallbackStore = () =>
     configureStore({
         reducer: {
-            app: (state = { user: null, isAuthenticated: false, isLoading: false }) => state,
+            app: (state = { user: null, accessToken: null, isAuthenticated: false, isLoading: false }) => state,
         },
     });
 
@@ -39,7 +40,9 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
     <React.StrictMode>
         <Provider store={getStore()}>
-            <Root isStandalone={isStandalone} />
+            <BrowserRouter>
+                <Root isStandalone={isStandalone} />
+            </BrowserRouter>
         </Provider>
     </React.StrictMode>
 );

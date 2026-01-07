@@ -2,7 +2,6 @@
 // Phase 4: Module Federation
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const deps = require('./package.json').dependencies;
 
@@ -22,7 +21,7 @@ module.exports = {
         test: /\.tsx?$/,
         include: [
           path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'lib', 'src')
+          path.resolve(__dirname, '..', 'lib', 'src')
         ],
         use: {
           loader: 'babel-loader',
@@ -38,6 +37,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash:8][ext]'
+        }
       }
     ]
   },
@@ -45,7 +51,7 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '@mfa/lib': path.resolve(__dirname, 'lib', 'src')
+      '@mfa/lib': path.resolve(__dirname, '..', 'lib', 'src')
     }
   },
 
@@ -74,12 +80,6 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: './public/index.html'
-    }),
-
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'public/images', to: 'images' }
-      ]
     })
   ]
 };

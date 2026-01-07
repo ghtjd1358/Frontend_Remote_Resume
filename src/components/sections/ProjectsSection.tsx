@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { usePortfolioModal } from '../modal';
 import { PortfolioItem } from '../../data';
 import { iconMap } from '../../constants/iconMap';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 interface ProjectsSectionProps {
   portfolioData: PortfolioItem[];
@@ -19,46 +20,71 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ portfolioData 
           <h2 className="section-title">주요 작업물</h2>
         </div>
         <div className="project-grid">
-          {(showAllProjects ? portfolioData : portfolioData.slice(0, 3)).map((portfolio, index) => (
+          {(showAllProjects ? portfolioData : portfolioData.slice(0, 4)).map((portfolio, index) => (
             <div
               key={portfolio.id}
-              className={`project-card ${index < 3 ? 'animate-on-scroll delay-' + (index + 1) : 'animate-visible'}`}
+              className={`card22 ${index < 4 ? 'animate-on-scroll delay-' + (index + 1) : 'animate-visible'}`}
               onClick={() => openPortfolioModal(portfolio)}
             >
-              {portfolio.image && (
-                <div className="project-image">
-                  <img src={portfolio.image} alt={portfolio.title} />
-                  <div className="project-overlay">
-                    <span className="project-overlay-btn">자세히 보기</span>
-                  </div>
-                </div>
-              )}
-              <div className="project-content">
-                <h3 className="project-title">{portfolio.title}</h3>
-                <p className="project-desc">{portfolio.desc}</p>
-                <div className="project-tech-icons">
-                  {portfolio.tags.map((tag) => (
-                    <div className="tech-icon" key={tag} data-tooltip={tag}>
-                      {iconMap[tag] || <span className="tech-icon-fallback">{tag}</span>}
-                    </div>
+              {/* 카드 바디 - 콘텐츠 영역 */}
+              <div className="card-body22">
+                {/* 타이틀 */}
+                <h4 className="card-title22">
+                  {portfolio.title}
+                </h4>
+
+                {/* 설명 */}
+                <p className="card-desc22">{portfolio.desc}</p>
+
+                {/* 기술 스택 태그 */}
+                <div className="card-tags22">
+                  {portfolio.tags.slice(0, 4).map((tag) => (
+                    <span key={tag} className="card-tag22">
+                      {iconMap[tag] && <span className="tag-icon">{iconMap[tag]}</span>}
+                      {tag}
+                    </span>
                   ))}
                 </div>
+
+                {/* 링크 버튼 */}
+                {portfolio.detail?.links && portfolio.detail.links.length > 0 && (
+                  <div className="card-links22">
+                    {portfolio.detail.links.map((link, idx) => (
+                      <a
+                        key={idx}
+                        href={link.url}
+                        className="card-link22"
+                        onClick={(e) => e.stopPropagation()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={link.label}
+                      >
+                        {link.label === 'GitHub' ? <FaGithub /> : <FaExternalLinkAlt />}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
-        {portfolioData.length > 3 && (
+
+        {portfolioData.length > 4 && (
           <div className="project-more animate-on-scroll">
             <button
-              className="btn btn-secondary"
+              className={`show-more-btn ${showAllProjects ? 'collapsed' : ''}`}
               onClick={() => setShowAllProjects(!showAllProjects)}
             >
-              {showAllProjects ? '접기 ↑' : `더보기 (${portfolioData.length - 3}개) ↓`}
+              <div className="chevron-wave">
+                <span className="chevron"></span>
+                <span className="chevron"></span>
+              </div>
             </button>
           </div>
         )}
+
         <div className="project-more animate-on-scroll" style={{ marginTop: '16px' }}>
-          <a href="http://localhost:3003" className="btn btn-secondary" target="_blank" rel="noreferrer">
+          <a href="/portfolio" className="btn btn-secondary">
             포트폴리오 전체보기 →
           </a>
         </div>

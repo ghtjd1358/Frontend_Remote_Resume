@@ -1,3 +1,5 @@
+import { mfaImg } from '../assets/images';
+
 export interface PortfolioLink {
   label: string;
   url: string;
@@ -59,7 +61,7 @@ export const mockPortfolioData: PortfolioItem[] = [
     id: 3,
     badge: '사이드',
     title: 'MFA 포트폴리오',
-    image: 'http://localhost:5001/images/project/mfa.jpg',
+    image: mfaImg,
     desc: 'Webpack Module Federation 기반의 마이크로 프론트엔드 포트폴리오 사이트.',
     tags: ['React', 'TypeScript', 'MFA', 'Supabase'],
     detail: {
