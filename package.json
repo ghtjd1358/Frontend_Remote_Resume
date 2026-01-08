@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "NODE_OPTIONS=--max_old_space_size=4096 webpack --config webpack.prod.js",
     "start:container": "cd packages/container && npm start",
     "start:app1": "cd packages/app1 && npm start",
     "start:app2": "cd packages/app2 && npm start",
