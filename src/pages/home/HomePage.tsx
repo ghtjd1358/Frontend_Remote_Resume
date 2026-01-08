@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { ModalContainer } from '../../components/modal';
-import { ScrollTopButton } from '@mfa/lib';
+import { ScrollTopButton } from '../../components/button';
 import {
     HeroSection,
     FeaturesSection,
