@@ -1,15 +1,15 @@
 import React, { lazy } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { RoutePath } from './paths';
+import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('../home/HomePage'));
 
 function RoutesGuestPages() {
     return (
         <Routes>
-            <Route path={RoutePath.Home} element={<HomePage />} />
-            <Route path={RoutePath.Resume} element={<HomePage />} />
-            <Route path="*" element={<Navigate to={RoutePath.Home} replace />} />
+            {/* Host에서 "/" 경로로 매핑됨 - 모든 하위 경로 처리 */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/resume" element={<HomePage />} />
+            {/* catch-all 제거 - Host가 다른 경로 처리하도록 */}
         </Routes>
     );
 }
