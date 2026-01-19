@@ -43,13 +43,18 @@ export const mockSkillCategories: SkillCategoryDetail[] = [
     name: '도구',
     skills: [
       { id: '14', name: 'Git' },
-      { id: '15', name: 'Webpack' },
-      { id: '16', name: 'Vite' },
-      { id: '17', name: 'Vercel' },
-      { id: '18', name: 'npm' },
-      { id: '19', name: 'Figma' },
-      { id: '20', name: 'Jira' },
-      { id: '21', name: 'Confluence' }
+      { id: '15', name: 'GitHub' },
+      { id: '16', name: 'Webpack' },
+      { id: '17', name: 'Vite' },
+      { id: '18', name: 'Vercel' },
+      { id: '19', name: 'npm' },
+      { id: '20', name: 'Jest' },
+      { id: '21', name: 'Figma' },
+      { id: '22', name: 'Jira' },
+      { id: '23', name: 'Confluence' },
+      { id: '24', name: 'AWS' },
+      { id: '25', name: 'S3' },
+      { id: '26', name: 'IBSheet' }
     ]
   }
 ];

@@ -28,7 +28,10 @@ import {
   SiFirebase,
   SiAmazonwebservices,
   SiAmazons3,
-  SiJest
+  SiJest,
+  SiPython,
+  SiLighthouse,
+  SiAxios
 } from 'react-icons/si';
 
 // Custom SVG Icons
@@ -118,4 +121,8 @@ export const iconMap: Record<string, React.ReactNode> = {
   'MFA': <SiWebpack color="#8DD6F9" />,
   'TanStack Query': <SiReactquery color="#FF4154" />,
   'Jest': <SiJest color="#C21325" />,
+  'GitHub': <SiGithub color="#181717" />,
+  'Python': <SiPython color="#3776AB" />,
+  'Lighthouse': <SiLighthouse color="#F44B21" />,
+  'Axios': <SiAxios color="#5A29E4" />,
 };
