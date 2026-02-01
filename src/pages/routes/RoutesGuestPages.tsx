@@ -1,16 +1,19 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { LoginPage } from '@sonhoseong/mfa-lib';
 
 const HomePage = lazy(() => import('../home/HomePage'));
 
 function RoutesGuestPages() {
     return (
-        <Routes>
-            {/* Host에서 "/" 경로로 매핑됨 - 모든 하위 경로 처리 */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/resume" element={<HomePage />} />
-            {/* catch-all 제거 - Host가 다른 경로 처리하도록 */}
-        </Routes>
+        <Suspense fallback={<div style={{ padding: '40px', textAlign: 'center' }}>로딩 중...</div>}>
+            <Routes>
+                {/* basename="/resume" 적용됨 */}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage appName="이력서" redirectPath="/" />} />
+                <Route path="/*" element={<HomePage />} />
+            </Routes>
+        </Suspense>
     );
 }
 

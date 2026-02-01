@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { iconMap } from '../../../constants/iconMap';
 import { SkillCategoryDetail } from '../../../data';
+import { SectionEditButton } from '../../../components/common';
 
 interface SkillsSectionProps {
   categories: SkillCategoryDetail[];
@@ -67,6 +68,8 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ categories }) => {
             ))
           )}
         </div>
+
+        <SectionEditButton editPath="/admin/skills" label="기술스택 편집" />
       </div>
     </section>
   );

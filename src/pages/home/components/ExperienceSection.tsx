@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { iconMap } from '../../../constants/iconMap';
 import { ExperienceDetail, ProjectDetail } from '../../../data';
+import { SectionEditButton } from '../../../components/common';
 
 interface ExperienceSectionProps {
   experiences: ExperienceDetail[];
@@ -176,6 +177,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ experience
             )}
           </>
         )}
+
+        <SectionEditButton editPath="/admin/experience" label="경력 편집" />
       </div>
     </section>
   );

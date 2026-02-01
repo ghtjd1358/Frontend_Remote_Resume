@@ -49,7 +49,10 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
   },
 
   plugins: [
@@ -57,8 +60,8 @@ module.exports = {
       name: 'remote1',
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/App',
-        './LnbItems': './src/exposes/lnb-items'
+        './App': './src/exposes/App',
+        './LnbItems': './src/exposes/lnb-items.tsx'
       },
       shared: {
         react: {

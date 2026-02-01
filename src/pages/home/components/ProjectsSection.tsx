@@ -3,6 +3,7 @@ import { usePortfolioModal } from '../../../components/modal';
 import { PortfolioItem } from '../../../data';
 import { iconMap } from '../../../constants/iconMap';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { SectionEditButton } from '../../../components/common';
 
 interface ProjectsSectionProps {
   portfolioData: PortfolioItem[];
@@ -88,6 +89,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ portfolioData 
             포트폴리오 전체보기 →
           </a>
         </div>
+
+        <SectionEditButton editPath="/admin/projects" label="프로젝트 편집" />
       </div>
     </section>
   );
