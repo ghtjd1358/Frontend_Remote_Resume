@@ -9,5 +9,5 @@ export interface UpdateProjectRequest {
   tasks?: ProjectTask[];
   tags?: string[];
   image_url?: string | null;
-  sort_order?: number;
+  order_index?: number;
 }

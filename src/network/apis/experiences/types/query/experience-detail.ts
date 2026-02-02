@@ -13,6 +13,6 @@ export interface ExperienceDetail {
   is_dev: boolean;
   tasks: ExperienceTask[];
   tags: string[];
-  sort_order: number;
+  order_index: number;
   created_at?: string;
 }

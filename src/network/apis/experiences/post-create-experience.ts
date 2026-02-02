@@ -16,7 +16,7 @@ export async function postCreateExperience(
         tags: params.tags || [],
         is_current: params.is_current ?? false,
         is_dev: params.is_dev ?? true,
-        sort_order: params.sort_order ?? 0
+        order_index: params.order_index ?? 0
       })
       .select()
       .single();

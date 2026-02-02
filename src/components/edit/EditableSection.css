@@ -1,0 +1,72 @@
+/* ============================================
+   EditableSection - 편집 가능한 섹션 래퍼
+   ============================================ */
+
+.editable-section {
+  position: relative;
+}
+
+.editable-section.edit-mode {
+  cursor: pointer;
+}
+
+.editable-section.edit-mode:hover .editable-section-overlay {
+  opacity: 1;
+}
+
+.editable-section.edit-mode:focus {
+  outline: none;
+}
+
+.editable-section.edit-mode:focus .editable-section-overlay {
+  opacity: 1;
+}
+
+/* Overlay */
+.editable-section-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 165, 233, 0.08);
+  border: 2px dashed #0ea5e9;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+/* Hint Badge */
+.editable-section-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #0ea5e9;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
+}
+
+.editable-section-hint svg {
+  flex-shrink: 0;
+}
+
+/* Animation for edit mode activation */
+.editable-section.edit-mode {
+  animation: editModeGlow 2s ease-in-out infinite;
+}
+
+@keyframes editModeGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+  }
+}

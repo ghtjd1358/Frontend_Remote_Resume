@@ -9,5 +9,5 @@ export interface UpdateExperienceRequest {
   is_dev?: boolean;
   tasks?: ExperienceTask[];
   tags?: string[];
-  sort_order?: number;
+  order_index?: number;
 }

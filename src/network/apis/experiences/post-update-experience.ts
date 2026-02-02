@@ -30,13 +30,13 @@ export async function postUpdateExperience(
  * 경력 순서를 업데이트합니다.
  */
 export async function postUpdateExperienceOrder(
-  items: { id: string; sort_order: number }[]
+  items: { id: string; order_index: number }[]
 ): Promise<ApiResponse<void>> {
   try {
     for (const item of items) {
       const { error } = await supabase
         .from('experiences')
-        .update({ sort_order: item.sort_order })
+        .update({ order_index: item.order_index })
         .eq('id', item.id);
 
       if (error) {
