@@ -1,3 +1,15 @@
+/**
+ * LNB Items - Remote1 (이력서)
+ *
+ * 역할 구분:
+ * - lnbItems: 이력서 홈페이지 내부 섹션 (anchor links, 스크롤 네비게이션)
+ * - guestMenuItems/authMenuItems: Remote1 독립 실행 시 사용되는 사이드바 메뉴
+ * - gnbItems: 전체 앱 간 이동 메뉴 (미사용, Host가 담당)
+ *
+ * 참고:
+ * - Host 내에서 실행될 때는 Host의 App.tsx에서 정의한 메뉴가 사용됨
+ * - 이 파일의 메뉴는 Remote1을 localhost:5001로 독립 실행할 때만 사용
+ */
 import React from 'react'
 import { RoutePath } from '../pages/routes/paths'
 

@@ -1,33 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
-import { createAppStore, getStore } from '@sonhoseong/mfa-lib'
+import { createBrowserHistory } from 'history'
+import { BrowserRouter, store, ToastProvider, ModalProvider } from '@sonhoseong/mfa-lib'
 import Root from './Root'
 import './styles/global.css'
 
-const isStandalone = !window.__REDUX_STORE__
-;(window as any).__MFA_STANDALONE__ = isStandalone
+const history = createBrowserHistory()
+const isPrd = process.env.NODE_ENV === 'production'
+const buildInfo = `${process.env.BUILD_INFO || 'dev'}`
 
-const basename = isStandalone ? '/' : '/resume'
+async function start() {
+    const rootElement = document.getElementById('root')
+    if (!rootElement) throw new Error('Root element not found')
 
-let store
-if (isStandalone) {
-    store = createAppStore()
-    window.__REDUX_STORE__ = store as any
-} else {
-    store = getStore()
+    ReactDOM.createRoot(rootElement).render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <ToastProvider>
+                    <ModalProvider>
+                        <BrowserRouter history={history}>
+                            <Root />
+                        </BrowserRouter>
+                    </ModalProvider>
+                </ToastProvider>
+            </Provider>
+        </React.StrictMode>
+    )
 }
 
-const rootElement = document.getElementById('root')
-if (!rootElement) throw new Error('Root element not found')
-
-ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter basename={basename}>
-                <Root />
-            </BrowserRouter>
-        </Provider>
-    </React.StrictMode>
-)
+start()

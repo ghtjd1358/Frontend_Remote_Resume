@@ -2808,11 +2808,29 @@ body.has-header {
   min-height: 100vh;
 }
 
-.app-lnb + .main-content,
+/* 단독 실행 시 block으로 변경 */
+body.standalone .app-container {
+  display: block;
+}
+
+/* Lnb가 있을 때 margin-left 적용 */
+.app-lnb + .main-content {
+  flex: 1;
+  margin-left: 260px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Host에서 로드될 때 */
 .app-container .main-content {
   flex: 1;
   margin-left: 260px;
   transition: margin-left 0.3s ease;
+}
+
+/* 단독 실행 시 Lnb 없으면 중앙 정렬 */
+body.standalone .app-container .main-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .app-lnb.collapsed + .main-content {
