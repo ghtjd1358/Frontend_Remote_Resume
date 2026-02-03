@@ -67,15 +67,17 @@ module.exports = {
       shared: {
         react: {
           singleton: true,
+          eager: true,
           requiredVersion: deps.react
         },
         'react-dom': {
           singleton: true,
+          eager: true,
           requiredVersion: deps['react-dom']
         },
-        'react-router-dom': { singleton: true },
-        '@reduxjs/toolkit': { singleton: true },
-        'react-redux': { singleton: true }
+        'react-router-dom': { singleton: true, eager: true },
+        '@reduxjs/toolkit': { singleton: true, eager: true },
+        'react-redux': { singleton: true, eager: true }
       }
     }),
 
