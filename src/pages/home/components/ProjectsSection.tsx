@@ -83,13 +83,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ portfolioData 
             </button>
           </div>
         )}
-
-        <div className="project-more animate-on-scroll" style={{ marginTop: '16px' }}>
-          <a href="/portfolio" className="btn btn-secondary">
-            포트폴리오 전체보기 →
-          </a>
-        </div>
-
         <SectionEditButton editPath="/admin/projects" label="프로젝트 편집" />
       </div>
     </section>

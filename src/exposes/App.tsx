@@ -10,10 +10,12 @@ function App() {
     const isAuthenticated = useMemo(() => !!accessToken, [accessToken])
 
     return (
-        <Suspense fallback="">
-            {!isAuthenticated && <RoutesGuestPages />}
-            {isAuthenticated && <RoutesAuthPages />}
-        </Suspense>
+        <>
+            <Suspense fallback="">
+                {!isAuthenticated && <RoutesGuestPages />}
+                {isAuthenticated && <RoutesAuthPages />}
+            </Suspense>
+        </>
     )
 }
 

@@ -31,23 +31,12 @@ const HomePage: React.FC = () => {
     return (
         <>
             <HeroSection userName={user?.name} resumeProfile={mockResumeProfile} />
-
-            <StickyNav
-                sections={navSections}
-                scrollOffset={60}
-                topPosition={20}
-            />
-
+            <StickyNav sections={navSections} scrollOffset={60} topPosition={20}/>
             <FeaturesSection features={mockFeatures} />
-
             <SkillsSection categories={mockSkillCategories} />
-
             <ExperienceSection experiences={mockExperiences} projects={mockProjects} />
-
             <ProjectsSection portfolioData={mockPortfolioData} />
-
             <ContactSection links={mockContactLinks} />
-
             <ScrollTopButton />
             <ModalContainer />
         </>

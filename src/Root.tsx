@@ -1,17 +1,15 @@
 import React, { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import {
-    Lnb,
     Container,
     ModalContainer,
     ToastContainer,
     ErrorBoundary,
     GlobalLoading,
-    Logo,
     useSimpleInitialize,
     selectAccessToken
 } from '@sonhoseong/mfa-lib'
-import { authMenuItems, guestMenuItems } from './exposes/lnb-items'
+import { lnbItems } from './exposes/lnb-items'
 import App from './exposes/App'
 
 function Root() {
@@ -19,8 +17,8 @@ function Root() {
     const isAuthenticated = useMemo(() => !!accessToken, [accessToken])
     const { initialized } = useSimpleInitialize()
 
-    const lnbItems = useMemo(() => {
-        return isAuthenticated ? authMenuItems : guestMenuItems
+    const sidebarItems = useMemo(() => {
+        return isAuthenticated ? lnbItems.hasPrefixAuthList : lnbItems.hasPrefixList
     }, [isAuthenticated])
 
     return initialized ? (
@@ -29,7 +27,7 @@ function Root() {
             <ToastContainer />
             <Container>
                 <ErrorBoundary>
-                    {isAuthenticated && <Lnb lnbItems={lnbItems} logo={<Logo customSize={36} />} />}
+                    {/*{isAuthenticated && <Lnb lnbItems={lnbItems} logo={<Logo customSize={36} />} />}*/}
                     <main className="main-content">
                         <App />
                     </main>
