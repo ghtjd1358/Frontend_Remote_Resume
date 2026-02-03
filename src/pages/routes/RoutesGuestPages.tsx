@@ -11,6 +11,7 @@ const PREFIX = storage.isHostApp() ? '/platform/resume' : '/resume'
 function RoutesGuestPages() {
     return (
         <Routes>
+            <Route path="/" element={<Navigate to={PREFIX} replace />} />
             <Route path={PREFIX} element={<HomePage />} />
             <Route path={`${PREFIX}/login`} element={<LoginPage appName="이력서" redirectPath={PREFIX} />} />
             <Route path={`${PREFIX}/admin/*`} element={<Navigate to={`${PREFIX}/login`} replace />} />

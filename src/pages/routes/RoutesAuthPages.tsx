@@ -17,6 +17,7 @@ const PREFIX = storage.isHostApp() ? '/platform/resume' : '/resume'
 function RoutesAuthPages() {
     return (
         <Routes>
+            <Route path="/" element={<Navigate to={PREFIX} replace />} />
             <Route path={PREFIX} element={<HomePage />} />
             {/* Admin */}
             <Route path={`${PREFIX}${RoutePath.AdminDashboard}`} element={<AdminDashboard />} />
