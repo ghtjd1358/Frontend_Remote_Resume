@@ -5,16 +5,19 @@ import { RoutePath } from './paths'
 
 const HomePage = lazy(() => import('../home/HomePage'))
 
-// 단독 실행: /resume/... , Host에서: /platform/resume/...
-const PREFIX = storage.isHostApp() ? '/platform/resume' : '/resume'
+// Host에서: '' (빈 문자열), 단독 실행: /resume
+const PREFIX = storage.isHostApp() ? '' : '/resume'
+// Home path: Host에서는 '/', 단독에서는 '/resume'
+const HOME_PATH = PREFIX || '/'
 
 function RoutesGuestPages() {
     return (
         <Routes>
-            <Route path="/" element={<Navigate to={PREFIX} replace />} />
-            <Route path={PREFIX} element={<HomePage />} />
-            <Route path={`${PREFIX}/login`} element={<LoginPage appName="이력서" redirectPath={PREFIX} />} />
-            <Route path={`${PREFIX}/admin/*`} element={<Navigate to={`${PREFIX}/login`} replace />} />
+            <Route path="/" element={<HomePage />} />
+            {PREFIX && <Route path={PREFIX} element={<HomePage />} />}
+            <Route path={`${PREFIX}/login`} element={<LoginPage appName="이력서" redirectPath="/" />} />
+            <Route path={`${PREFIX}/admin/*`} element={<LoginPage appName="이력서" redirectPath="/" />} />
+            <Route path="*" element={<HomePage />} />
         </Routes>
     )
 }

@@ -1,13 +1,15 @@
 /**
  * LNB Items - Remote1 (이력서)
- * KOMCA 패턴: hasPrefixList 구조
+ * KOMCA 패턴: pathPrefix + hasPrefixList 구조
  */
 import React from 'react'
-import { storage } from '@sonhoseong/mfa-lib'
 import { RoutePath } from '../pages/routes/paths'
 
-// 단독 실행: /resume , Host에서: /platform/resume
-const PREFIX = storage.isHostApp() ? '/platform/resume' : '/resume'
+// pathPrefix: Host(Container)가 라우트에 사용
+export const pathPrefix = '/resume'
+
+// 내부 메뉴용 PREFIX (Host에서는 빈 문자열)
+const PREFIX = '/resume'
 
 export interface LnbItemData {
     id: string
