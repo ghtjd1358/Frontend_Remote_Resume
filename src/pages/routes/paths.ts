@@ -1,8 +1,6 @@
 export enum RoutePath {
     Home = '/',
 
-    AdminDashboard = '/admin',
-
     AdminSkills = '/admin/skills',
     AdminSkillsNew = '/admin/skills/new',
     AdminSkillsEdit = '/admin/skills/edit/:id',

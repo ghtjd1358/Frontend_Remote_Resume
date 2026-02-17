@@ -8,6 +8,11 @@ import './styles/global.css'
 
 const store = createAppStore()
 
+// 단독 실행 시 store를 window에 노출 (dispatchToHost가 작동하도록)
+if (!window.__REDUX_STORE__) {
+    window.__REDUX_STORE__ = store as any
+}
+
 async function start() {
     const rootElement = document.getElementById('root')
     if (!rootElement) throw new Error('Root element not found')

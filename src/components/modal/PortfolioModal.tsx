@@ -1,8 +1,46 @@
 import React, { useEffect, useCallback } from 'react';
 import { ModalCommonProps } from './types';
 import { popModal } from './modal-manager';
-import { PortfolioItem } from '../../data';
+import { PortfolioItem, PortfolioSection } from '../../data';
 import { iconMap } from '../../constants/iconMap';
+
+// 노션 스타일 섹션 컴포넌트
+const NotionSection: React.FC<{ section: PortfolioSection }> = ({ section }) => (
+  <div className="notion-section">
+    <h4 className="notion-heading">{section.heading}</h4>
+    <div className="notion-divider" />
+    <div className="notion-content">
+      {section.problem && (
+        <div className="notion-item">
+          <span className="notion-label">문제</span>
+          <p className="notion-text">{section.problem}</p>
+        </div>
+      )}
+      {section.cause && (
+        <div className="notion-item">
+          <span className="notion-label">원인</span>
+          <p className="notion-text">{section.cause}</p>
+        </div>
+      )}
+      {section.thinking && (
+        <div className="notion-item">
+          <span className="notion-label">고민</span>
+          <p className="notion-text">{section.thinking}</p>
+        </div>
+      )}
+      {section.solution && section.solution.length > 0 && (
+        <div className="notion-item">
+          <span className="notion-label">해결</span>
+          <ul className="notion-list">
+            {section.solution.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+);
 
 interface PortfolioModalProps extends ModalCommonProps {
   portfolio: PortfolioItem;
@@ -97,6 +135,15 @@ export const PortfolioModal: React.FC<PortfolioModalProps> = ({ portfolio, onClo
                     <li key={index}>{result}</li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {/* 노션 스타일 섹션 */}
+            {portfolio.detail?.sections && portfolio.detail.sections.length > 0 && (
+              <div className="notion-sections">
+                {portfolio.detail.sections.map((section, index) => (
+                  <NotionSection key={index} section={section} />
+                ))}
               </div>
             )}
           </div>

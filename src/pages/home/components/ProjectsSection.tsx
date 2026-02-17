@@ -35,7 +35,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ portfolioData 
                 </h4>
 
                 {/* 설명 */}
-                <p className="card-desc22">{portfolio.desc}</p>
+                <div className="card-desc22-wrapper">
+                  <p className="card-desc22">{portfolio.desc}</p>
+                </div>
 
                 {/* 기술 스택 태그 */}
                 <div className="card-tags22">
@@ -70,8 +72,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ portfolioData 
           ))}
         </div>
 
-        {portfolioData.length > 3 && (
-          <div className="project-more animate-on-scroll">
+        <div className="project-more animate-on-scroll">
+          {portfolioData.length > 3 && (
             <button
               className={`show-more-btn ${showAllProjects ? 'collapsed' : ''}`}
               onClick={() => setShowAllProjects(!showAllProjects)}
@@ -81,9 +83,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ portfolioData 
                 <span className="chevron"></span>
               </div>
             </button>
-          </div>
-        )}
-        <SectionEditButton editPath="/admin/projects" label="프로젝트 편집" />
+          )}
+          <SectionEditButton editPath="/admin/projects" label="프로젝트 편집" />
+        </div>
       </div>
     </section>
   );

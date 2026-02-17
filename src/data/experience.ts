@@ -39,7 +39,7 @@ export const mockExperiences: ExperienceDetail[] = [
     is_current: true,
     is_dev: true,
     tasks: [
-      { id: '1', task: '그룹웨어·포털 시스템 개발, 4개 서비스 재사용 가능한 커스텀 훅 설계 및 배포' },
+      { id: '1', task: '그룹웨어·포털 시스템 개발, 서비스 재사용 가능한 커스텀 훅 설계 및 배포' },
       { id: '2', task: '외부 리포트 솔루션 연동 훅 설계, 문서 출력 기능 공용화' },
       { id: '3', task: 'IBSheet 기반 관리자 CRUD 페이지 다수 개발 (민원, 신탁, 거래처, 메뉴얼)' },
       { id: '4', task: 'ViewModel 패턴 활용, 복잡한 폼 상태 관리 및 양방향 데이터 바인딩 적용' },

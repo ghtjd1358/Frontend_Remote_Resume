@@ -21,7 +21,7 @@ function Root() {
         return isAuthenticated ? lnbItems.hasPrefixAuthList : lnbItems.hasPrefixList
     }, [isAuthenticated])
 
-    return initialized ? (
+    return (
         <>
             <ModalContainer />
             <ToastContainer />
@@ -35,8 +35,6 @@ function Root() {
                 </ErrorBoundary>
             </Container>
         </>
-    ) : (
-        <></>
     )
 }
 
