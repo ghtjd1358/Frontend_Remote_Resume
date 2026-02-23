@@ -3,13 +3,12 @@
  * KOMCA 패턴: pathPrefix + hasPrefixList 구조
  */
 import React from 'react'
-import { RoutePath } from '../pages/routes/paths'
 
-// pathPrefix: Host(Container)가 라우트에 사용
-export const pathPrefix = '/resume'
+// pathPrefix: Host(Container)가 라우트에 사용 - /container prefix 포함
+export const pathPrefix = '/container/resume'
 
-// 내부 메뉴용 PREFIX (Host에서는 빈 문자열)
-const PREFIX = '/resume'
+// Host에서 사용할 경로 PREFIX - /container prefix 포함
+const HOST_PREFIX = '/container/resume'
 
 export interface LnbItemData {
     id: string
@@ -45,15 +44,15 @@ const icons = {
     ),
 }
 
-// Guest용 메뉴 (비로그인)
+// Guest용 메뉴 (비로그인) - Host에서 사용할 경로 (항상 /resume prefix)
 const guestList: LnbItemData[] = [
-    { id: 'resume-home', title: '이력서', path: `${PREFIX}${RoutePath.Home}`, icon: icons.resume },
+    { id: 'resume-home', title: '이력서', path: HOST_PREFIX, icon: icons.resume },
 ]
 
-// Auth용 메뉴 (로그인)
+// Auth용 메뉴 (로그인) - Host에서 사용할 경로 (항상 /resume prefix)
 const authList: LnbItemData[] = [
-    { id: 'resume-home', title: '이력서', path: `${PREFIX}${RoutePath.Home}`, icon: icons.resume },
-    { id: 'resume-admin', title: '이력서 관리', path: `${PREFIX}${RoutePath.AdminDashboard}`, icon: icons.dashboard },
+    { id: 'resume-home', title: '이력서', path: HOST_PREFIX, icon: icons.resume },
+    { id: 'resume-admin', title: '이력서 관리', path: `${HOST_PREFIX}/admin/skills`, icon: icons.dashboard },
 ]
 
 // KOMCA 패턴: hasPrefixList 구조로 export
